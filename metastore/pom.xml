@@ -198,6 +198,34 @@
         </plugins>
       </build>
     </profile>
+    <profile>
+      <id>datanucleus-enhance</id>
+      <activation>
+        <jdk>[,1.9)</jdk>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.datanucleus</groupId>
+            <artifactId>datanucleus-maven-plugin</artifactId>
+            <configuration>
+              <api>JDO</api>
+              <verbose>true</verbose>
+              <metadataIncludes>**/*.jdo</metadataIncludes>
+              <fork>true</fork>
+            </configuration>
+            <executions>
+              <execution>
+                <phase>process-classes</phase>
+                <goals>
+                  <goal>enhance</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
   </profiles>
 
   <build>
@@ -254,24 +282,6 @@
                 <source>src/gen/thrift/gen-javabean</source>
               </sources>
             </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.datanucleus</groupId>
-        <artifactId>datanucleus-maven-plugin</artifactId>
-        <configuration>
-          <api>JDO</api>
-          <verbose>true</verbose>
-          <metadataIncludes>**/*.jdo</metadataIncludes>
-          <fork>false</fork>
-        </configuration>
-        <executions>
-          <execution>
-            <phase>process-classes</phase>
-            <goals>
-              <goal>enhance</goal>
-            </goals>
           </execution>
         </executions>
       </plugin>

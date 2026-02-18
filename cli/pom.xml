@@ -149,6 +149,12 @@
           <artifactId>hbase-common</artifactId>
           <version>${hbase.hadoop2.version}</version>
           <scope>test</scope>
+          <exclusions>
+            <exclusion>
+              <groupId>jdk.tools</groupId>
+              <artifactId>jdk.tools</artifactId>
+            </exclusion>
+          </exclusions>
         </dependency>
       </dependencies>
     </profile>
